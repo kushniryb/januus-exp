@@ -1,0 +1,18 @@
+default: &default
+  adapter:  postgresql
+  encoding: utf-8
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+
+development:
+  <<: *default
+  database: januus-exp_development
+
+test:
+  <<: *default
+  database: januus-exp_test
+
+production:
+  <<: *default
+  database: januus-exp_production
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>

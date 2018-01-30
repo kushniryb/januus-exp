@@ -1,0 +1,26 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/public/uploads
+logfile
+
+.env
+coverage
+
+.DS_Store
+.idea
+
+config/database.yml
+config/secrets.yml
+config/settings.yml
+
+node_modules
+
+.ruby-gemset
+
+.DS_store
