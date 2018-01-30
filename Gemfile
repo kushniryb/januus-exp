@@ -28,6 +28,7 @@ gem 'rabl'
 
 # === FRONT-END ===
 
+gem 'activerecord-postgis-adapter'
 gem 'foundation-rails'
 gem 'hamlit'
 gem 'sass-rails',  '~> 5.0'
