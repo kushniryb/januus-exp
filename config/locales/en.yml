@@ -1,2 +1,9 @@
 en:
-  hello: "Hello world"
+  app_name:   Test project
+  app_action: '%{action_name} | Test project'
+
+  tickets:
+    index:
+      page_title: Home
+    show:
+      page_title: 'Ticket %{id}'
