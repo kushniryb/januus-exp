@@ -15,10 +15,9 @@ gem 'rails', '~> 5.1.0'
 
 # === FEATURES ===
 
+gem 'active_interaction', '~> 3.6'
 gem 'draper'
 gem 'kaminari'
-gem 'reform',       '~> 2.2.4'
-gem 'reform-rails', '~> 0.1.7'
 
 # === API ===
 
