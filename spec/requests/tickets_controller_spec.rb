@@ -1,44 +1,29 @@
 require 'rails_helper'
 
 describe TicketsController, type: :request do
-  before { post api_v1_tickets_path, params: params }
+  describe '#index' do
+    let!(:tickets) { create_list(:ticket, 5) }
 
-  context 'with valid params' do
-    let(:ticket) { JSON.parse(response.body, symbolize_names: true)[:data][:ticket] }
-    let(:params) { build(:api_call) }
+    before { get tickets_path }
 
-    it "returns HTTP status 'ok'" do
-      expect(response).to have_http_status :ok
-    end
-
-    it 'returns created Ticket' do
-      expect(ticket[:id]).not_to                       be_falsy
-      expect(ticket[:request_id]).not_to               be_falsy
-      expect(ticket[:sequence_id]).not_to              be_falsy
-      expect(ticket[:request_type]).not_to             be_falsy
-      expect(ticket[:additional_service_areas]).not_to be_falsy
-      expect(ticket[:response_due_at]).not_to          be_falsy
-      expect(ticket[:locations]).not_to                be_falsy
-
-    end
+    it { expect(response).to          have_http_status(:ok) }
+    it { expect(assigns(:tickets)).to match(tickets) }
   end
 
-  context 'with invalid params' do
-    let(:params) { build(:api_call).merge(RequestNumber: '') }
+  describe '#show' do
+    context 'valid' do
+      let!(:ticket) { create(:ticket) }
 
-    it "returns HTTP status 'unprocessable_entity'" do
-      expect(response).to have_http_status :unprocessable_entity
+      before { get ticket_path(ticket) }
+
+      it { expect(response).to         have_http_status(:ok) }
+      it { expect(assigns(:ticket)).to eq(ticket) }
     end
 
-    context 'with invalid nested params' do
-      let(:params) do
-        build(:api_call)
-          .deep_merge(ExcavationInfo: { DigsiteInfo: { AddressInfo: { Place: '' } } })
-      end
+    context 'invalid' do
+      let(:get_ticket) { get ticket_path(id: 0) }
 
-      it "returns HTTP status 'unprocessable_entity'" do
-        expect(response).to have_http_status :unprocessable_entity
-      end
+      it { expect{ get_ticket }.to raise_error }
     end
   end
 end

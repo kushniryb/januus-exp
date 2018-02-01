@@ -4,5 +4,9 @@ FactoryBot.define do
     manned       { Faker::Boolean.boolean }
 
     ticket
+
+    trait :with_address do
+      address
+    end
   end
 end

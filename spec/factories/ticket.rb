@@ -10,5 +10,9 @@ FactoryBot.define do
     trait :with_locations do
       locations { PolygonGenerator.random_polygon }
     end
+
+    trait :with_excavator do
+      excavator
+    end
   end
 end

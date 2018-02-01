@@ -15,6 +15,6 @@ class TicketDecorator < ApplicationDecorator
   end
 
   def service_areas
-    Array(additional_service_areas).push(service_area)
+    [service_area, *additional_service_areas].compact
   end
 end
