@@ -24,7 +24,7 @@ describe Api::V1::TicketsController, type: :request do
   end
 
   context 'with invalid params' do
-    let(:params) { build(:api_call).merge('RequestNumber': '') }
+    let(:params) { build(:api_call).merge(RequestNumber: '') }
 
     it "returns HTTP status 'unprocessable_entity'" do
       expect(response).to have_http_status :unprocessable_entity
@@ -32,12 +32,9 @@ describe Api::V1::TicketsController, type: :request do
 
     context 'with invalid nested params' do
       let(:params) do
-        ticket = build(:api_call)
-
-        ticket[:ExcavationInfo][:DigsiteInfo][:AddressInfo].merge!(Place: '')
-
-        ticket
-     end
+        build(:api_call)
+          .deep_merge(ExcavationInfo: { DigsiteInfo: { AddressInfo: { Place: '' } } })
+      end
 
       it "returns HTTP status 'unprocessable_entity'" do
         expect(response).to have_http_status :unprocessable_entity

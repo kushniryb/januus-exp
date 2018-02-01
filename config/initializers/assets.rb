@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile << %w[
 
 Rails.application.config.assets.precompile << %w[
   tickets/index.js
+  tickets/show.js
 ]

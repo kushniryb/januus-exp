@@ -11,7 +11,7 @@ end
 
 gem 'pg',    '~> 0.18'
 gem 'puma',  '~> 3.7'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '5.1.0'
 
 # === FEATURES ===
 
@@ -28,12 +28,12 @@ gem 'rabl'
 # === FRONT-END ===
 
 gem 'activerecord-postgis-adapter'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.5'
 gem 'hamlit'
-gem 'sass-rails',  '~> 5.0'
-gem 'simple_form', '~> 3.5.0'
-gem 'turbolinks',  '~> 5'
-gem 'uglifier',    '>= 1.3.0'
+gem 'sass-rails',       '~> 5.0'
+gem 'simple_form',      '~> 3.5.0'
+gem 'turbolinks',       '~> 5'
+gem 'uglifier',         '>= 1.3.0'
 
 # === GROUPS ===
 
@@ -63,6 +63,7 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'capybara-webkit'
+  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'selenium-webdriver'

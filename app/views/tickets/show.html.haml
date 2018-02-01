@@ -1,6 +1,9 @@
 = content_for :title do
   = t('.page_title', id: ticket.id)
 
+= content_for :javascripts do
+  = javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}"
+
 %hr
 %h2= t('.page_title', id: ticket.id)
 %hr
@@ -73,3 +76,4 @@
   %h3 Locations
   %hr
 
+  #map{ data: { locations: ticket.locations_coordinates.to_json } }

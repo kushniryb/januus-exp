@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Tickets::CreateFromJSON do
+describe Api::V1::Tickets::Create do
   let(:call) { described_class.run(params: ActionController::Parameters.new(params)) }
   let(:params) { build(:api_call) }
 
@@ -36,13 +36,7 @@ describe Tickets::CreateFromJSON do
     end
 
     context 'Excavator attributes' do
-      let(:params) do
-        ticket = build(:api_call)
-
-        ticket[:Excavator].merge!(CompanyName: '')
-
-        ticket
-      end
+      let(:params) { build(:api_call).deep_merge(Excavator: { CompanyName: '' }) }
 
       it 'does not create a new Ticket' do
         expect{ call }.not_to change(Ticket, :count)
@@ -59,12 +53,9 @@ describe Tickets::CreateFromJSON do
 
     context 'Address attributes' do
       let(:params) do
-        ticket = build(:api_call)
-
-        ticket[:ExcavationInfo][:DigsiteInfo][:AddressInfo].merge!(Place: '')
-
-        ticket
-     end
+        build(:api_call)
+          .deep_merge(ExcavationInfo: { DigsiteInfo: { AddressInfo: { Place: '' } } })
+      end
 
       it 'does not create a new Ticket' do
         expect{ call }.not_to change(Ticket, :count)
