@@ -78,8 +78,8 @@ FactoryBot.define do
            'Zip':    Faker::Address.zip,
            'Address': {
              'AddressNum': [
-               Faker::Address.street_name,
-               Faker::Address.street_name
+               rand(999),
+               rand(999)
              ]
            },
            'Street': {
