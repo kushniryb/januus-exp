@@ -1,2 +1,75 @@
 = content_for :title do
-  = t('.page_title', id: 1)
+  = t('.page_title', id: ticket.id)
+
+%hr
+%h2= t('.page_title', id: ticket.id)
+%hr
+
+.row.field
+  .columns.small-2
+    %label= Ticket.human_attribute_name(:request_id)
+  .columns.small-10
+    %p= ticket.request_id
+
+.row.field
+  .columns.small-2
+    %label= Ticket.human_attribute_name(:sequence_id)
+  .columns.small-10
+    %p= ticket.sequence_id
+
+- if ticket.request_type
+  .row.field
+    .columns.small-2
+      %label= Ticket.human_attribute_name(:request_type)
+    .columns.small-10
+      %p= ticket.request_type.capitalize
+
+- if ticket.service_areas.any?
+  .row.field
+    .columns.small-2
+      %label= Ticket.human_attribute_name(:service_areas)
+    .columns.small-10
+      %p= ticket.service_areas.join(', ')
+
+- if ticket.response_due_at
+  .row.field
+    .columns.small-2
+      %label= Ticket.human_attribute_name(:response_due_at)
+    .columns.small-10
+      %p= ticket.response_due_at
+
+- if ticket.locations
+  .row.field
+    .columns.small-2
+      %label= Ticket.human_attribute_name(:locations)
+    .columns.small-10
+      %p= ticket.locations_coordinates
+
+- if ticket.excavator
+  %hr
+  %h3= "Excavator № #{ticket.excavator_id}"
+  %hr
+
+  .row.field
+    .columns.small-2
+      %label= Excavator.human_attribute_name(:company_name)
+    .columns.small-10
+      %p= ticket.excavator_company_name
+
+  .row.field
+    .columns.small-2
+      %label= Excavator.human_attribute_name(:manned)
+    .columns.small-10
+      %p= ticket.excavator_manned? ? t('generic.yes') : t('generic.no')
+
+  .row.field
+    .columns.small-2
+      %label= Address.human_attribute_name(:address_line)
+    .columns.small-10
+      %p= ticket.address_line
+
+- if ticket.locations
+  %hr
+  %h3 Locations
+  %hr
+

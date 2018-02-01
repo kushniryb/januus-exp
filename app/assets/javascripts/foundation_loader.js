@@ -1,5 +1,5 @@
 //= require foundation
 
-$(function() {
+$(document).on('turbolinks:load', function() {
   $(document).foundation();
 });

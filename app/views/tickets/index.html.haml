@@ -1,0 +1,17 @@
+%table.responsive{ data: { table_with_link: true } }
+  %caption= t('.table.title')
+  %thead
+    %tr
+      %th= Ticket.human_attribute_name(:request_id)
+      %th= Ticket.human_attribute_name(:sequence_id)
+      %th= Ticket.human_attribute_name(:service_area)
+      %th= Ticket.human_attribute_name(:response_due_at)
+
+  %tbody
+    - @tickets.each do |item|
+      = render 'table_item', item: item
+
+= paginate @tickets
+
+%p.pagination-info
+  = page_entries_info @tickets

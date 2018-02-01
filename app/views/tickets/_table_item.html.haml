@@ -1,0 +1,10 @@
+%tr{ data: { url: ticket_path(item) } }
+  %td= item.request_id
+  %td= item.sequence_id
+  %td= item.service_area
+  %td= item.due_at
+
+  - if item.additional_service_areas.any?
+    %tr
+      %td.table-expand-row-nested{ colspan: '8' }
+        %p= item.additional_service_areas.join(', ')

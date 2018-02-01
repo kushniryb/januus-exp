@@ -7,5 +7,6 @@ $ gem install bundler
 $ bundle
 $ cp config/database.yml.example config/database.yml
 $ rails db:setup
+$ npm install
 $ rails s
 ```

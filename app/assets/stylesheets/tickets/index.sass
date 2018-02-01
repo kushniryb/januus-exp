@@ -1,0 +1,22 @@
+@import variables
+@import components/kaminari
+
+table
+  width: 100%
+  margin: 0
+
+  tbody
+    tr
+      cursor: pointer
+
+      &:hover
+        background: $light_gray
+
+  caption
+    font-size:   1.5em
+    font-weight: bolder
+    padding:     .5em 0
+
+  caption,
+  tfoot tr td
+    font-weight: normal

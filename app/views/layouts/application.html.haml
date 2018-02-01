@@ -9,15 +9,18 @@
     = csrf_meta_tags
 
     = stylesheet_link_tag 'application', 'data-turbolinks-track': 'reload', media: 'all'
+    = include_action_stylesheet
     = yield :stylesheets
 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = include_action_javascript
 
-  %body
+  %body{ class: "#{controller_name} #{action_name}" }
     = render partial: 'layouts/header'
 
-    #content
-      = yield
+    .content.row.panel
+      .column.small-12
+        = yield
 
     = render partial: 'layouts/footer'
 

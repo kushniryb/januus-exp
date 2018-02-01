@@ -1,0 +1,30 @@
+@import variables
+
+ul.pagination
+  display:         flex
+  margin:          25px auto 10px auto
+  justify-content: center
+  float:           none
+
+  li
+    &.current
+      padding: 0.285em 0.2em
+
+    &.disabled
+      padding: 0.285em 0.2em
+
+    &:not(.disabled):hover a
+      background: $pagination-color
+      color:      white
+
+    a
+      transition: background 0.15s ease-in, color 0.15s ease-in
+
+  a
+    border:    $pagination-border-thickness solid $pagination-color
+    font-size: $pagination-size
+
+p.pagination-info
+  font-size:  0.7em
+  color:      $medium_gray
+  text-align: center
