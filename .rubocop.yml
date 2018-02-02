@@ -4,6 +4,7 @@ AllCops:
     - 'db/**/*'
     - 'bin/*'
     - 'spec/**/*.rb'
+    - 'vendor/**/*'
 
 # Commonly used screens these days easily fit more than 80 characters.
 Metrics/LineLength:

@@ -1,0 +1,22 @@
+machine:
+  ruby:
+    version: 2.4.0
+
+dependencies:
+  override:
+    - cp config/secrets.yml.example config/secrets.yml
+    - cp config/database.yml.example config/database.yml
+  post:
+    - bundle install --path .bundle
+
+database:
+  override:
+    - bundle exec rake db:create db:schema:load db:migrate RAILS_ENV=test
+
+compile:
+  pre:
+    - npm install
+
+test:
+  post:
+    - bundle exec rubocop --rails
