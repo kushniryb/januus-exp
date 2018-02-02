@@ -1,12 +1,12 @@
 # Ignore bundler config.
-/.bundle
+.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+log/*
+tmp/*
 !/log/.keep
 !/tmp/.keep
-/public/uploads
+public/uploads
 logfile
 
 .env
@@ -14,6 +14,7 @@ coverage
 
 .DS_Store
 .idea
+public/assets
 
 config/database.yml
 config/secrets.yml

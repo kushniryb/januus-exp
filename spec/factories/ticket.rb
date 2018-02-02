@@ -12,7 +12,7 @@ FactoryBot.define do
     end
 
     trait :with_excavator do
-      excavator
+      association :excavator, factory: %i[excavator with_address]
     end
   end
 end

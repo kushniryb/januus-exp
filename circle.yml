@@ -1,0 +1,26 @@
+machine:
+  ruby:
+    version: 2.4.0
+  node:
+    version: 6.10.3
+
+dependencies:
+  pre:
+    - cp config/secrets.yml.example config/secrets.yml
+  override:
+    - bundle install --path .bundle
+  post:
+    - npm install
+    - bundle exec rake assets:precompile
+  cache_directories:
+    - public/assets
+    - tmp/cache/assets
+    - node_modules
+
+database:
+  override:
+    - bundle exec rake db:create db:schema:load db:migrate RAILS_ENV=test
+
+test:
+  post:
+    - bundle exec rubocop --rails

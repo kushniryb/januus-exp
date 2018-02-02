@@ -6,7 +6,7 @@ module PolygonGenerator
 
   class << self
     def random_polygon
-      loop { return wkt_polygon if RGeo::Cartesian.factory.parse_wkt(wkt_polygon) }
+      RGeo::Cartesian.factory.parse_wkt(wkt_polygon) ? wkt_polygon : default_polygon
     end
 
     private
@@ -33,6 +33,10 @@ module PolygonGenerator
 
     def random_coordinate
       rand(MIN_COORDINATE..MAX_COORDINATE).round(5)
+    end
+
+    def default_polygon
+      'POLYGON ((25.774 -80.190, 18.466 -66.118, 32.321 -64.757, 25.774 -80.190))'
     end
   end
 end
