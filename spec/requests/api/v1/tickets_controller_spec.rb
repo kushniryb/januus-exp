@@ -18,7 +18,7 @@ describe Api::V1::TicketsController, type: :request do
       expect(ticket[:request_type]).not_to             be_falsy
       expect(ticket[:additional_service_areas]).not_to be_falsy
       expect(ticket[:response_due_at]).not_to          be_falsy
-      expect(ticket[:locations]).not_to                be_falsy
+      expect(ticket[:zone]).not_to                     be_falsy
 
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180130153546) do
+ActiveRecord::Schema.define(version: 20180202093551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20180130153546) do
     t.string "service_area"
     t.string "additional_service_areas", default: [], null: false, array: true
     t.datetime "response_due_at"
-    t.geometry "locations", limit: {:srid=>0, :type=>"st_polygon"}
+    t.geometry "zone", limit: {:srid=>0, :type=>"st_polygon"}
     t.index ["additional_service_areas"], name: "index_tickets_on_additional_service_areas", using: :gin
-    t.index ["locations"], name: "index_tickets_on_locations", using: :gist
+    t.index ["zone"], name: "index_tickets_on_zone", using: :gist
   end
 
 end

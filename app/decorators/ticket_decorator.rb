@@ -8,7 +8,7 @@ class TicketDecorator < ApplicationDecorator
            to: :excavator_address, allow_nil: true
 
   delegate :coordinates,
-           to: :locations, prefix: true, allow_nil: true
+           to: :zone, prefix: true, allow_nil: true
 
   def due_at
     I18n.l(response_due_at, format: :long) if response_due_at
@@ -16,5 +16,9 @@ class TicketDecorator < ApplicationDecorator
 
   def service_areas
     [service_area, *additional_service_areas].compact
+  end
+
+  def serialized_coordinates
+    zone_coordinates.to_json
   end
 end

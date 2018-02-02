@@ -10,13 +10,13 @@ var TicketsShow = (function() {
   const POLYGON_STROKE_WEIGHT  = 2;
   const POLYGON_FILL_OPACITY   = 0.35;
 
-  var $map, locations, map, edgePoints;
+  var $map, coordinates, map, edgePoints;
 
   var init = function() {
     assignAttributes();
 
     if ($map.length > 0) {
-      mapLocations();
+      mapCoordinates();
       setEdgePoints();
       loadMap();
       drawPolygon();
@@ -24,16 +24,16 @@ var TicketsShow = (function() {
   };
 
   var assignAttributes = function() {
-    $map      = $(MAP_SELECTOR);
-    locations = $map.data('locations');
+    $map        = $(MAP_SELECTOR);
+    coordinates = $map.data('coordinates');
   };
 
   var setEdgePoints = function() {
-    edgePoints = EdgePoints.detect(locations);
+    edgePoints = EdgePoints.detect(coordinates);
   };
 
-  var mapLocations = function() {
-    locations = locations.map(function(line) {
+  var mapCoordinates = function() {
+    coordinates = coordinates.map(function(line) {
       return line.map(function(coordinates) {
         return {
           lat: coordinates[0],
@@ -53,14 +53,14 @@ var TicketsShow = (function() {
 
   var viewCenter = function() {
     return {
-      lat: locations.length !== 0 ? (edgePoints.minLat + edgePoints.maxLat) / 2 : 0,
-      lng: locations.length !== 0 ? (edgePoints.minLng + edgePoints.maxLng) / 2 : 0
+      lat: coordinates.length !== 0 ? (edgePoints.minLat + edgePoints.maxLat) / 2 : 0,
+      lng: coordinates.length !== 0 ? (edgePoints.minLng + edgePoints.maxLng) / 2 : 0
     }
   };
 
   var drawPolygon = function() {
     var polygon = new google.maps.Polygon({
-      paths:         locations,
+      paths:         coordinates,
       strokeColor:   POLYGON_BORDER_COLOR,
       strokeOpacity: POLYGON_STROKE_OPACITY,
       strokeWeight:  POLYGON_STROKE_WEIGHT,

@@ -12,7 +12,7 @@ en:
       ticket:
         additional_service_areas: Additional Service Areas
         id:                       ID
-        locations:                Locations
+        zone:                     Zone
         response_due_at:          Due At
         request_id:               Request Number
         request_type:             Request Type
@@ -37,3 +37,7 @@ en:
         title: Tickets
     show:
       page_title: 'Ticket № %{id}'
+
+      sections:
+        excavator: 'Excavator № %{id}'
+        zone:      Area

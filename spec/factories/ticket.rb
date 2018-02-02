@@ -7,8 +7,8 @@ FactoryBot.define do
     additional_service_areas { Faker::Hipster.words(4) }
     response_due_at          { Faker::Time.between(5.days.ago, 1.year.from_now) }
 
-    trait :with_locations do
-      locations { PolygonGenerator.random_polygon }
+    trait :with_zone do
+      zone { PolygonGenerator.random_polygon }
     end
 
     trait :with_excavator do

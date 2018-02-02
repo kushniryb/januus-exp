@@ -41,16 +41,16 @@
     .columns.small-10
       %p= ticket.response_due_at
 
-- if ticket.locations
+- if ticket.zone
   .row.field
     .columns.small-2
-      %label= Ticket.human_attribute_name(:locations)
+      %label= Ticket.human_attribute_name(:zone)
     .columns.small-10
-      %p= ticket.locations_coordinates
+      %p= ticket.zone_coordinates
 
 - if ticket.excavator
   %hr
-  %h3= "Excavator № #{ticket.excavator_id}"
+  %h3= t('.sections.excavator', id: ticket.excavator_id)
   %hr
 
   .row.field
@@ -71,9 +71,9 @@
     .columns.small-10
       %p= ticket.address_line
 
-- if ticket.locations
+- if ticket.zone
   %hr
-  %h3 Locations
+  %h3= t('.sections.zone')
   %hr
 
-  #map{ data: { locations: ticket.locations_coordinates.to_json } }
+  #map{ data: { coordinates: ticket.serialized_coordinates } }

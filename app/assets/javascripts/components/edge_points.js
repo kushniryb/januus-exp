@@ -6,9 +6,9 @@ var EdgePoints = (function() {
 
   var edgePoints;
 
-  var detect = function(locations) {
+  var detect = function(coordinates) {
     reset();
-    find(locations);
+    find(coordinates);
 
     return edgePoints;
   };
@@ -22,8 +22,8 @@ var EdgePoints = (function() {
     };
   };
 
-  var find = function(locations) {
-    locations.forEach(function(line) {
+  var find = function(coordinates) {
+    coordinates.forEach(function(line) {
       var latValues = line.map(function(point) { return point.lat }),
           lngValues = line.map(function(point) { return point.lng }),
           maxLat    = Math.max(...latValues),

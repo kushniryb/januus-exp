@@ -32,7 +32,7 @@ module Tickets
         service_area:             service_area,
         additional_service_areas: additional_service_areas,
         response_due_at:          response_due_at,
-        locations:                locations
+        zone:                     zone
       }
     end
 
@@ -75,7 +75,7 @@ module Tickets
       root[:DateTimes][:ResponseDueDateTime]
     end
 
-    def locations
+    def zone
       root[:ExcavationInfo][:DigsiteInfo][:WellKnownText]
     end
 

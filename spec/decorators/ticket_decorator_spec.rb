@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe TicketDecorator do
-  let(:resource) { build(:ticket, :with_excavator, :with_locations) }
+  let(:resource) { build(:ticket, :with_excavator, :with_zone) }
 
   subject { resource.decorate }
 
